@@ -24,7 +24,7 @@ const Navbar = (props: Props) => {
         {links.map((link) => (
           <li key={link.label}>
             <Link
-              className="text-zinc-500 hover:text-zinc-800 transition-colors"
+              className="text-zinc-500 text-lg hover:text-zinc-800 transition-colors"
               href={link.href}
             >
               {link.label}
