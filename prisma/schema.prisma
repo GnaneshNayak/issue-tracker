@@ -13,7 +13,7 @@ datasource db {
 model Issue {
   id          Int      @id @default(autoincrement())
   title       String   @db.VarChar(255)
-  decriptions String   @db.Text
+  description String   @db.Text
   status      Status   @default(OPEN)
   createdAt   DateTime @default(now())
   updateAt    DateTime @updatedAt
