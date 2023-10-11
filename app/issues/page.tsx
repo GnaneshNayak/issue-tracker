@@ -1,4 +1,5 @@
 import { Button } from '@radix-ui/themes';
+import Link from 'next/link';
 import React from 'react';
 
 type Props = {};
@@ -6,7 +7,9 @@ type Props = {};
 const IsuuesPage = (props: Props) => {
   return (
     <div>
-      <Button>new issure</Button>
+      <Button>
+        <Link href="/issues/new">New Issue</Link>
+      </Button>
     </div>
   );
 };
