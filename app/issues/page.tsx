@@ -1,8 +1,8 @@
 import prisma from '@/prisma/client';
 import { Table } from '@radix-ui/themes';
-import Links from '../components/Link';
-import IssueStatusBadge from '../components/issueStatusBadge';
+
 import IssueAction from './IssueAction';
+import { IssueStatusBadge, Links } from '../components';
 
 type Props = {};
 

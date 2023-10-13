@@ -1,10 +1,6 @@
-import React from 'react';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+import { Skeleton } from '@/app/components';
 
-type Props = {};
-
-const LoadingNewIssuePage = (props: Props) => {
+const LoadingNewIssuePage = () => {
   return (
     <div className="max-w-2xl ">
       <Skeleton />
