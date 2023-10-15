@@ -1,6 +1,5 @@
 import { issueSchema } from '@/app/validationSchemas';
 import prisma from '@/prisma/client';
-import { useParams } from 'next/navigation';
 import { NextRequest, NextResponse } from 'next/server';
 
 interface Props {
