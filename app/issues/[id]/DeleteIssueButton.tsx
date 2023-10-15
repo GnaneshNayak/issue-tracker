@@ -6,7 +6,7 @@ type Props = {
 };
 
 const DeleteIssueButton = ({ issueId }: Props) => {
-  return <Button color="red">Delete</Button>;
+  return <Button color="red">Delete Issue</Button>;
 };
 
 export default DeleteIssueButton;
