@@ -2,7 +2,7 @@ import prisma from '@/prisma/client';
 import { Table } from '@radix-ui/themes';
 
 import IssueAction from './IssueAction';
-import { IssueStatusBadge, Links } from '../components';
+import { IssueStatusBadge, Links } from '../../components';
 
 type Props = {};
 
@@ -27,7 +27,7 @@ const IsuuesPage = async (props: Props) => {
           {issues.map((issue) => (
             <Table.Row key={issue.id}>
               <Table.Cell>
-                <Links href={`issues/${issue.id}`}>{issue.title}</Links>
+                <Links href={`/issues/${issue.id}`}>{issue.title}</Links>
                 <div className="block md:hidden">
                   <IssueStatusBadge status={issue.status} />
                 </div>
