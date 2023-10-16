@@ -13,6 +13,7 @@ import {
   Flex,
   Text,
 } from '@radix-ui/themes';
+import { Skeleton } from '@/app/components';
 
 type Props = {};
 
@@ -69,7 +70,7 @@ const NavLinks = () => {
 const AuthStatus = () => {
   const { status, data: session } = useSession();
 
-  if (status === 'loading') return null;
+  if (status === 'loading') return <Skeleton width="3rem" />;
 
   if (status === 'unauthenticated')
     return (
