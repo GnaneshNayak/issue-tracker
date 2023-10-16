@@ -17,9 +17,25 @@ import {
 type Props = {};
 
 const Navbar = (props: Props) => {
+  return (
+    <nav className=" mb-7 px-6 border-b py-3 ">
+      <Container>
+        <Flex justify={'between'}>
+          <Flex align="center" gap="3">
+            <Link href="/">
+              <AiFillBug size={25} />
+            </Link>
+            <NavLinks />
+          </Flex>
+          <AuthStatus />
+        </Flex>
+      </Container>
+    </nav>
+  );
+};
+
+const NavLinks = () => {
   const currentPath = usePathname();
-  const { status, data: session } = useSession();
-  console.log(status);
 
   const links = [
     {
@@ -32,61 +48,62 @@ const Navbar = (props: Props) => {
     },
   ];
   return (
-    <nav className=" mb-7 px-6 border-b py-3 ">
-      <Container>
-        <Flex justify={'between'}>
-          <Flex align="center" gap="3">
-            <Link href="/">
-              <AiFillBug size={25} />
-            </Link>
-            <ul className="flex space-x-6">
-              {links.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    className={classnames({
-                      'text-zinc-500': currentPath !== link.href,
-                      'text-zinc-900': currentPath === link.href,
-                      'hover:text-zinc-800 transition-colors': true,
-                    })}
-                    href={link.href}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </Flex>
-          <Box className="content-center">
-            {status === 'unauthenticated' && (
-              <Link href={'/api/auth/signin'}>Login</Link>
-            )}
-            {status === 'authenticated' && (
-              <DropdownMenu.Root>
-                <DropdownMenu.Trigger>
-                  <Avatar
-                    size="2"
-                    radius="full"
-                    src={session.user!.image!}
-                    fallback="?"
-                    className="cursor-pointer"
-                    // referrerPolicy="no-referrer"
-                  />
-                </DropdownMenu.Trigger>
-                <DropdownMenu.Content>
-                  <DropdownMenu.Label>
-                    <Text size="2">{session.user!.email}</Text>
-                  </DropdownMenu.Label>
-                  <DropdownMenu.Item>
-                    <Link href={'/api/auth/signout'}>Logout</Link>
-                  </DropdownMenu.Item>
-                </DropdownMenu.Content>
-              </DropdownMenu.Root>
-              // <Link href={'/api/auth/signout'}>Logout</Link>
-            )}
-          </Box>
-        </Flex>
-      </Container>
-    </nav>
+    <ul className="flex space-x-6">
+      {links.map((link) => (
+        <li key={link.label}>
+          <Link
+            className={classnames({
+              'nav-link': true,
+              '!text-zinc-900': currentPath === link.href,
+            })}
+            href={link.href}
+          >
+            {link.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+const AuthStatus = () => {
+  const { status, data: session } = useSession();
+
+  if (status === 'loading') return null;
+
+  if (status === 'unauthenticated')
+    return (
+      <Link className="nav-link" href={'/api/auth/signin'}>
+        Login
+      </Link>
+    );
+
+  return (
+    <Box className="content-center">
+      {status === 'authenticated' && (
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger>
+            <Avatar
+              size="2"
+              radius="full"
+              src={session.user!.image!}
+              fallback="?"
+              className="cursor-pointer"
+              // referrerPolicy="no-referrer"
+            />
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content>
+            <DropdownMenu.Label>
+              <Text size="2">{session.user!.email}</Text>
+            </DropdownMenu.Label>
+            <DropdownMenu.Item>
+              <Link href={'/api/auth/signout'}>Logout</Link>
+            </DropdownMenu.Item>
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
+        // <Link href={'/api/auth/signout'}>Logout</Link>
+      )}
+    </Box>
   );
 };
 
