@@ -27,7 +27,7 @@ const IssueSummary = ({ open, closed, inProgress }: Props) => {
             >
               {container.label}
             </Link>
-            <Flex gap="2">
+            <Flex gap="1">
               <Text size="5" className="font-bold">
                 {container.value}
               </Text>
