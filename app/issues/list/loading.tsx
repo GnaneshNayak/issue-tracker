@@ -6,10 +6,11 @@ type Props = {};
 
 const loading = (props: Props) => {
   const issues = [1, 2, 3, 4, 5];
+
   return (
     <>
       <IssueAction />
-      <Table.Root variant="surface">
+      <Table.Root variant="surface" className="mt-3">
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeaderCell>Issue</Table.ColumnHeaderCell>
