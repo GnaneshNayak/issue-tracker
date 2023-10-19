@@ -42,6 +42,7 @@ export async function PATCH(req: NextRequest, { params: { id } }: Props) {
       title,
       description,
       assignedToUserId,
+      status: 'ON_PROGRESS',
     },
   });
 
